@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "792770188645",
+    "project_id": "flutter-tourism-app",
+    "storage_bucket": "flutter-tourism-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792770188645:android:393f5d39a10041b2997d8c",
+        "android_client_info": {
+          "package_name": "com.example.flutter_tourism_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792770188645-9optr56jjbqrhda5jett1f22ee1vidki.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_tourism_app",
+            "certificate_hash": "5f228ba0549fa62a846a1b88870bf578296daedc"
+          }
+        },
+        {
+          "client_id": "792770188645-pphoeprhb2b14sdrb0hj1o7k4jkkcgbr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3IlxMRNY_u8CHy66Xfva61X8BYAr-Vtc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792770188645-pphoeprhb2b14sdrb0hj1o7k4jkkcgbr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
