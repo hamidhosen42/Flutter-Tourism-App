@@ -1,3 +1,7 @@
+// ignore_for_file: use_build_context_synchronously, prefer_const_constructors
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tourism_app/login_signup/login_view.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -47,79 +51,140 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     padding: const EdgeInsets.all(15.0),
                     child: Column(
                       children: [
-                        Row(
-                          children: [
-                            Stack(
-                              children: [
-                                ClipOval(
-                                  clipBehavior: Clip.hardEdge,
-                                  child: GestureDetector(
-                                    onTap: () async {
-                                      // Use Navigator to show a full-screen image page
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => Scaffold(
-                                            backgroundColor: Colors.black,
-                                            body: Center(
-                                              child: Hero(
-                                                tag: 'user-avatar',
-                                                child: Image.asset(
-                                                  'assets/avatar.png',
-                                                  fit: BoxFit.cover,
+                        StreamBuilder(
+                          stream: FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(FirebaseAuth.instance.currentUser!.uid)
+                              .snapshots(),
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            } else {
+                              var data = snapshot.data;
+                              return Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Stack(
+                                          children: [
+                                            ClipOval(
+                                              clipBehavior: Clip.hardEdge,
+                                              child: GestureDetector(
+                                                onTap: () async {
+                                                  // Use Navigator to show a full-screen image page
+                                                  await Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Scaffold(
+                                                        backgroundColor:
+                                                            Colors.grey,
+                                                        body: Center(
+                                                          child: Hero(
+                                                              tag:
+                                                                  'user-avatar',
+                                                              child: data['image_url'] !=
+                                                                      ""
+                                                                  ? Image
+                                                                      .network(
+                                                                      data[
+                                                                          'image_url'],
+                                                                      // width: 100,
+                                                                      // height: 100,
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                    )
+                                                                  : Image.asset(
+                                                                      "assets/avatar.png",
+                                                                      height:
+                                                                          100,
+                                                                      width:
+                                                                          100,
+                                                                    )),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                                child: Hero(
+                                                    tag: 'user-avatar',
+                                                    child: data!['image_url'] !=
+                                                            ""
+                                                        ? Image.network(
+                                                            data['image_url'],
+                                                            width: 100,
+                                                            height: 100,
+                                                            fit: BoxFit.cover,
+                                                          )
+                                                        : Image.asset(
+                                                            "assets/avatar.png",
+                                                            height: 100,
+                                                            width: 100,
+                                                          )),
+                                              ),
+                                            ),
+                                            Positioned(
+                                              bottom: -12,
+                                              right: -15,
+                                              child: IconButton(
+                                                onPressed: () async {
+                                                  // Navigator.push(
+                                                  //     context,
+                                                  //     MaterialPageRoute(
+                                                  //         builder: (_) =>
+                                                  //             ProfileEditScreen()));
+                                                },
+                                                icon: Icon(
+                                                  Icons.edit,
+                                                  color: Colors.black,
+                                                  size: 30,
                                                 ),
                                               ),
                                             ),
-                                          ),
+                                          ],
                                         ),
-                                      );
-                                    },
-                                    child: Hero(
-                                      tag: 'user-avatar',
-                                      child: Image.asset(
-                                        'assets/avatar.png',
-                                        width: 110,
-                                        height: 110,
-                                        fit: BoxFit.cover,
-                                      ),
+                                        const SizedBox(width: 20),
+                                        Expanded(
+                                            child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.all(1),
+                                              child: Text(
+                                                data['name'],
+                                                style: GoogleFonts.lato(
+                                                    fontSize: 25),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.only(
+                                                  left: 2, bottom: 5),
+                                              child: Text(data['email']),
+                                            ),
+                                            // Padding(
+                                            //   padding: EdgeInsets.only(
+                                            //       left: 2, bottom: 5),
+                                            //   child: Text(data['phone_number']),
+                                            // ),
+                                            // Padding(
+                                            //   padding: EdgeInsets.only(
+                                            //       left: 2, bottom: 5),
+                                            //   child: Text(data['address']),
+                                            // ),
+                                          ],
+                                        )),
+                                      ],
                                     ),
-                                  ),
+                                  ],
                                 ),
-                                Positioned(
-                                  bottom: -8,
-                                  right: -5,
-                                  child: IconButton(
-                                    onPressed: () async {},
-                                    icon: const Icon(
-                                      Icons.camera_alt,
-                                      color: Colors.white,
-                                      size: 25,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(width: 20),
-                            Expanded(
-                                child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: Text(
-                                    'USer',
-                                    style: GoogleFonts.lato(fontSize: 25),
-                                  ),
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.only(bottom: 5),
-                                  child: Text(
-                                    'user@user.com',
-                                  ),
-                                ),
-                              ],
-                            )),
-                          ],
+                              );
+                            }
+                          },
                         ),
                       ],
                     ),
@@ -195,6 +260,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Size(230, 50),
                         )),
                     onPressed: () async {
+                      await FirebaseAuth.instance.signOut();
                       Navigator.of(context)
                           .pushReplacementNamed(LoginView.routeName);
                     },

@@ -1,16 +1,20 @@
 // ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, unused_element, constant_identifier_names, unused_import
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_tourism_app/login_signup/login_view.dart';
 import 'package:flutter_tourism_app/login_signup/signup_view.dart';
 import 'package:flutter_tourism_app/screens/tours/home_screen.dart';
 import 'package:get/get.dart';
+
+import '../component/navigation_bar.dart';
 
 
 const String splash = "/splash_screen";
 const String onboarding = "/onboarding_screen";
 const String signUp = "/sign-up-screen";
 const String signIn = "/login-view-screen";
+const String navigation = "/navigation-screen";
 const String resetPassword = "/reset_password.dart";
 const String userForm = "/user-form-screen";
 const String privacyPolicy = "/privacy-policy-screen";
@@ -41,4 +45,5 @@ List<GetPage> getPages = [
   GetPage(name: signIn, page: () => LoginView()),
   GetPage(name: signUp, page: () => SignUpView()),
   GetPage(name: home_screen, page: () => HomeScreen()),
+  GetPage(name: navigation, page: () => NavigationBars()),
 ];

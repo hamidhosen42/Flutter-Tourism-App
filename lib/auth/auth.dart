@@ -100,7 +100,7 @@ class AuthController extends GetxController {
           if (authCredential!.uid.isNotEmpty) {
             if (authCredential.emailVerified) {
               Fluttertoast.showToast(msg: 'Login Successful');
-              Get.toNamed(home_screen);
+              Get.toNamed(navigation);
             } else {
               Fluttertoast.showToast(
                   msg:

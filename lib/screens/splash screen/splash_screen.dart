@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tourism_app/component/navigation_bar.dart';
 import 'package:flutter_tourism_app/login_signup/signup_view.dart';
 import 'package:flutter_tourism_app/screens/tours/home_screen.dart';
 
@@ -26,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Timer(
           const Duration(seconds: 5),
           () =>
-              Navigator.of(context).pushReplacementNamed(HomeScreen.routeName));
+              Navigator.of(context).pushReplacementNamed(NavigationBars.routeName));
     } else {
       // !-----------Sign In----------
       Timer(
