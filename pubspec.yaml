@@ -58,7 +58,7 @@ dependencies:
   connectivity_plus: ^3.0.2
   onboarding: any
   flutter_walkthrough_screen:
-  provider: ^6.0.5
+  provider: any
   intl: ^0.17.0
   week_day_picker: ^0.1.1
   flutter_bounce: ^1.1.0

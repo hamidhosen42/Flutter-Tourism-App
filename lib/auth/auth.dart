@@ -63,6 +63,7 @@ class AuthController extends GetxController {
             .set(userModel.toJson());
 
         Get.toNamed(signIn);
+        
       } else {
         Fluttertoast.showToast(msg: 'Please enter all the fields');
       }
