@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tourism_app/login_signup/login_view.dart';
 import 'package:flutter_tourism_app/login_signup/signup_view.dart';
+import 'package:flutter_tourism_app/screens/profile/profile_edit_screen.dart';
 import 'package:flutter_tourism_app/screens/tours/home_screen.dart';
 import 'package:get/get.dart';
 
@@ -33,6 +34,7 @@ const String searchScreen = '/search-screen';
 const String seeAllScreen = '/seeAll-screen';
 const String detailsScreen = '/details-screen';
 const String navAddLastStep = '/navAddLastStep-screen';
+const String profileEdit = '/profileEdit-screen';
 
 
 // !admin-----------------------------
@@ -46,4 +48,5 @@ List<GetPage> getPages = [
   GetPage(name: signUp, page: () => SignUpView()),
   GetPage(name: home_screen, page: () => HomeScreen()),
   GetPage(name: navigation, page: () => NavigationBars()),
+  GetPage(name:profileEdit, page: () => ProfileEditScreen()),
 ];

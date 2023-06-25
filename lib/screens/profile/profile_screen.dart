@@ -4,6 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tourism_app/login_signup/login_view.dart';
+import 'package:flutter_tourism_app/route/route.dart';
+import 'package:flutter_tourism_app/screens/profile/profile_edit_screen.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../main.dart';
@@ -132,11 +135,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               right: -15,
                                               child: IconButton(
                                                 onPressed: () async {
-                                                  // Navigator.push(
-                                                  //     context,
-                                                  //     MaterialPageRoute(
-                                                  //         builder: (_) =>
-                                                  //             ProfileEditScreen()));
+                                                  Navigator.of(context)
+                                                      .pushNamed(
+                                                          ProfileEditScreen
+                                                              .routeName);
                                                 },
                                                 icon: Icon(
                                                   Icons.edit,

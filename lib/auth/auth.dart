@@ -133,8 +133,6 @@ class AuthController extends GetxController {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-        print("sfdsdfsfdsfd");
-
     // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
@@ -165,7 +163,7 @@ class AuthController extends GetxController {
           .doc(_user.uid)
           .set(userModel.toJson());
       Fluttertoast.showToast(msg: 'Google Login Successfull');
-      // Get.toNamed(home_screen);
+      Get.toNamed(navigation);
     } else {
       Fluttertoast.showToast(msg: 'Sometimes is wrong');
     }

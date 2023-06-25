@@ -2,7 +2,9 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tourism_app/login_signup/signup_view.dart';
+import 'package:flutter_tourism_app/screens/profile/profile_edit_screen.dart';
 import 'package:flutter_tourism_app/screens/splash%20screen/splash_screen.dart';
 import 'package:flutter_tourism_app/theme/theme_manager.dart';
 import 'package:get/get.dart';
@@ -62,35 +64,42 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider.value(value: Tours()),
-        ChangeNotifierProvider.value(value: Bookings()),
-      ],
-      child: GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-       home: SplashScreen(),
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        themeMode: themeManager.themeMode,
-        routes: {
-          SplashScreen.routeName:(ctx)=>const SplashScreen(),
-          HomeScreen.routeName: (ctx) => const HomeScreen(),
-          BookingScreen.routeName: (ctx) => const BookingScreen(),
-          FavouriteScreen.routeName: (ctx) => const FavouriteScreen(true),
-          DetailScreen.routeName: (ctx) => const DetailScreen(),
-          ProfileScreen.routeName: (ctx) => const ProfileScreen(),
-          IsNorth.routeName: (ctx) => const IsNorth(true),
-          AdminHome.routeName: (context) => const AdminHome(),
-          AddTour.routeName: (context) => const AddTour(),
-          NavigationBars.routeName: (context) => const NavigationBars(),
-          LoginView.routeName: (context) => const LoginView(),
-          SignUpView.routeName: (context) => SignUpView(),
-          AdminNavigationBars.routeName: (context) =>
-              const AdminNavigationBars(),
-          ResetPassword.routeName: (context) => const ResetPassword(),
-        },
-      ),
-    );
+    return ScreenUtilInit(
+        designSize: Size(430, 926),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return MultiProvider(
+            providers: [
+              ChangeNotifierProvider.value(value: Tours()),
+              ChangeNotifierProvider.value(value: Bookings()),
+            ],
+            child: GetMaterialApp(
+              debugShowCheckedModeBanner: false,
+              home: SplashScreen(),
+              theme: lightTheme,
+              darkTheme: darkTheme,
+              themeMode: themeManager.themeMode,
+              routes: {
+                SplashScreen.routeName: (ctx) => const SplashScreen(),
+                HomeScreen.routeName: (ctx) => const HomeScreen(),
+                BookingScreen.routeName: (ctx) => const BookingScreen(),
+                FavouriteScreen.routeName: (ctx) => const FavouriteScreen(true),
+                DetailScreen.routeName: (ctx) => const DetailScreen(),
+                ProfileScreen.routeName: (ctx) => const ProfileScreen(),
+                ProfileEditScreen.routeName: (ctx) => const ProfileEditScreen(),
+                IsNorth.routeName: (ctx) => const IsNorth(true),
+                AdminHome.routeName: (context) => const AdminHome(),
+                AddTour.routeName: (context) => const AddTour(),
+                NavigationBars.routeName: (context) => const NavigationBars(),
+                LoginView.routeName: (context) => const LoginView(),
+                SignUpView.routeName: (context) => SignUpView(),
+                AdminNavigationBars.routeName: (context) =>
+                    const AdminNavigationBars(),
+                ResetPassword.routeName: (context) => const ResetPassword(),
+              },
+            ),
+          );
+        });
   }
 }
