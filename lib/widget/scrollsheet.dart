@@ -1,22 +1,44 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../main.dart';
 
-import '../providers/tour.dart';
 import '../screens/bookings/book_tour_screen.dart';
 import '../screens/tours/overview_screen.dart';
 import 'description.dart';
 
 class ScrollSheet extends StatelessWidget {
-  const ScrollSheet({
-    Key? key,
-    required this.tabController,
-    required this.selectTour,
-  }) : super(key: key);
 
   final TabController tabController;
-  final Tour selectTour;
+  
+  final List date;
+  final int duration;
+  final List famousPoints;
+  final List famousResturant;
+  final List imageUrl;
+  final bool isFav;
+  final bool isNorth;
+  final bool isSouth;
+  final String location;
+  final int price;
+  final String title;
+
+  ScrollSheet(
+      {required this.date,
+      required this.duration,
+      required this.famousPoints,
+      required this.famousResturant,
+      required this.imageUrl,
+      required this.isFav,
+      required this.isNorth,
+      required this.isSouth,
+      required this.location,
+      required this.price,
+      required this.title,
+      required this.tabController
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +90,11 @@ class ScrollSheet extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.9,
                   child: TabBarView(controller: tabController, children: [
-                    OverviewScreen(selectTour: selectTour),
-                    Description(selectTour: selectTour),
-                    BookTourScreen(selectTour: selectTour),
+                    OverviewScreen(title:title,location:location,price:price,duration:duration),
+                    OverviewScreen(title:title,location:location,price:price,duration:duration),
+                    OverviewScreen(title:title,location:location,price:price,duration:duration),
+                    // Description(selectTour: selectTour),
+                    // BookTourScreen(selectTour: selectTour),
                   ]),
                 ),
               ],

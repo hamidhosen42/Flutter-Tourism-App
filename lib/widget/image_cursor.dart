@@ -73,8 +73,8 @@ class _ImageCursorState extends State<ImageCursor> {
               itemBuilder: (context, index) => Bounce(
                 duration: const Duration(milliseconds: 95),
                 onPressed: () {
-                  Navigator.of(context).pushNamed(DetailScreen.routeName,
-                      arguments: widget.tours[index].id);
+                  // Navigator.of(context).pushNamed(DetailScreen.routeName,
+                  //     arguments: widget.tours[index].id);
                 },
                 child: ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(15)),

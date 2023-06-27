@@ -85,7 +85,7 @@ class _MyAppState extends State<MyApp> {
                 HomeScreen.routeName: (ctx) => const HomeScreen(),
                 BookingScreen.routeName: (ctx) => const BookingScreen(),
                 FavouriteScreen.routeName: (ctx) => const FavouriteScreen(true),
-                DetailScreen.routeName: (ctx) => const DetailScreen(),
+                // DetailScreen.routeName: (ctx) => DetailScreen(imageUrl: [],),
                 ProfileScreen.routeName: (ctx) => const ProfileScreen(),
                 ProfileEditScreen.routeName: (ctx) => const ProfileEditScreen(),
                 IsNorth.routeName: (ctx) => const IsNorth(true),

@@ -1,20 +1,30 @@
-// ignore_for_file: unnecessary_const
+// ignore_for_file: unnecessary_const, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../providers/tour.dart';
 import '../../widget/price_duration_tile.dart';
 import '../../widget/services_tile.dart';
 
-class OverviewScreen extends StatelessWidget {
-  const OverviewScreen({
-    Key? key,
-    required this.selectTour,
-  }) : super(key: key);
+class OverviewScreen extends StatefulWidget {
+  final String title;
+  final String location;
+  final int price;
+  final int duration;
 
-  final Tour selectTour;
+  OverviewScreen(
+      {required this.title,
+      required this.location,
+      required this.price,
+      required this.duration});
+  // final Tour selectTour;
 
+  @override
+  State<OverviewScreen> createState() => _OverviewScreenState();
+}
+
+class _OverviewScreenState extends State<OverviewScreen> {
+  // final Tour selectTour;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,7 +36,7 @@ class OverviewScreen extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  selectTour.title,
+                  widget.title,
                   style: GoogleFonts.lato(
                       fontSize: 21, fontWeight: FontWeight.w600),
                 ),
@@ -36,7 +46,7 @@ class OverviewScreen extends StatelessWidget {
               children: [
                 const Icon(Icons.location_on_outlined),
                 Text(
-                  '${selectTour.location}, Pakistan',
+                  '${widget.location}, Pakistan',
                   style: GoogleFonts.lato(fontSize: 15),
                 ),
               ],
@@ -47,10 +57,9 @@ class OverviewScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                priceDurationTile(
-                    'Price', context, selectTour.price.toString()),
+                priceDurationTile('Price', context, widget.price.toString()),
                 priceDurationTile('Duration', context,
-                    '${selectTour.duration} Days ${selectTour.duration - 1} Nights'),
+                    '${widget.duration} Days ${widget.duration - 1} Nights'),
               ],
             ),
             const SizedBox(

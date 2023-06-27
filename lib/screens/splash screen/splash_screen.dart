@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (user != null) {
       // !-----------Home Screen---------------
       Timer(
-          const Duration(seconds: 5),
+          const Duration(seconds: 1),
           () =>
               Navigator.of(context).pushReplacementNamed(NavigationBars.routeName));
     } else {
