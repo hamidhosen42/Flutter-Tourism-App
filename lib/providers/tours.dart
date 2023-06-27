@@ -117,7 +117,7 @@ class Tours with ChangeNotifier {
           'https://media.istockphoto.com/id/1277791195/photo/kalam-valley-pakistan.jpg?s=612x612&w=0&k=20&c=R0yCcBmMQbLCG0_zs6EmtVDBAZ9wb0RddmVkTxkCD_o=',
           'https://c4.wallpaperflare.com/wallpaper/132/643/617/fawn-pug-wearing-cowboy-hat-red-bandana-and-blue-denim-coat-pictorial-wallpaper-preview.jpg',
           'https://images.unsplash.com/photo-1596464148416-e0916276a9f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-        ]),
+        ]),   
     Tour(
         duration: 1,
         isFav: false,
@@ -157,6 +157,9 @@ class Tours with ChangeNotifier {
           'https://pakiholic.com/wp-content/uploads/2017/07/16.jpg',
           'https://pakiholic.com/wp-content/uploads/2017/07/10-Gorakh-Hill-Station-Sunset-Photo-Credits-Nisar-Adil.jpg'
         ]),
+
+
+
     Tour(
         duration: 2,
         isFav: false,
@@ -194,6 +197,11 @@ class Tours with ChangeNotifier {
           'https://dreamvistatours.com/wp-content/uploads/2021/01/tour-image-1.jpg',
           'https://www.karachitravellers.pk/myuploads/2021/01/Quetta-Ziarat-Tour-Package-Pakistan-Balochistan-Quaid-e-Azam-Residency-Ziarat.jpg',
         ]),
+
+
+
+
+        
     Tour(
         famousResturant: [''],
         duration: 2,

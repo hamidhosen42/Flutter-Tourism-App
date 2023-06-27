@@ -271,7 +271,7 @@ class _LoginViewState extends State<LoginView> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           const Expanded(
-                              flex: 2,
+                              flex: 1,
                               child: Divider(
                                 color: Color(0xFF969AA8),
                               )),
@@ -289,7 +289,7 @@ class _LoginViewState extends State<LoginView> {
                             ),
                           ),
                           const Expanded(
-                              flex: 2,
+                              flex: 1,
                               child: Divider(
                                 color: Color(0xFF969AA8),
                               )),
