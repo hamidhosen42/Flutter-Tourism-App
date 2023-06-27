@@ -45,9 +45,11 @@ class _OverviewScreenState extends State<OverviewScreen> {
             Row(
               children: [
                 const Icon(Icons.location_on_outlined),
-                Text(
-                  '${widget.location}, Pakistan',
-                  style: GoogleFonts.lato(fontSize: 15),
+                Expanded(
+                  child: Text(
+                    '${widget.location}, Pakistan',
+                    style: GoogleFonts.lato(fontSize: 15),
+                  ),
                 ),
               ],
             ),

@@ -91,9 +91,8 @@ class ScrollSheet extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * 0.9,
                   child: TabBarView(controller: tabController, children: [
                     OverviewScreen(title:title,location:location,price:price,duration:duration),
+                    Description(famousPoints:famousPoints,famousResturant:famousResturant),
                     OverviewScreen(title:title,location:location,price:price,duration:duration),
-                    OverviewScreen(title:title,location:location,price:price,duration:duration),
-                    // Description(selectTour: selectTour),
                     // BookTourScreen(selectTour: selectTour),
                   ]),
                 ),
