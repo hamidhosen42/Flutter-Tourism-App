@@ -98,36 +98,6 @@ class _TourWidgetState extends State<TourWidget> {
                             ),
                           ),
                           Positioned(
-                            top: 0,
-                            right: 0,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                  decoration: const BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(50)),
-                                      color: Colors.black38),
-                                  child: IconButton(
-                                    icon: widget.tours[index].isFav
-                                        ? const Icon(
-                                            Icons.favorite,
-                                            color: Colors.redAccent,
-                                            size: 28,
-                                          )
-                                        : const Icon(
-                                            Icons.favorite_border,
-                                            size: 26,
-                                            color: Colors.white,
-                                          ),
-                                    onPressed: () async {
-                                      setState(() {
-                                        data['isFav'] = !data['isFav'];
-                                      });
-                                    },
-                                  )),
-                            ),
-                          ),
-                          Positioned(
                               child: Padding(
                             padding: const EdgeInsets.only(bottom: 10),
                             child: Container(

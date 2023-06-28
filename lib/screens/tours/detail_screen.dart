@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 
 import '../../widget/scrollsheet.dart';
 
@@ -22,19 +22,19 @@ class DetailScreen extends StatefulWidget {
   final int price;
   final String title;
 
-  DetailScreen(
-      {required this.date,
-      required this.duration,
-      required this.famousPoints,
-      required this.famousResturant,
-      required this.imageUrl,
-      required this.isFav,
-      required this.isNorth,
-      required this.isSouth,
-      required this.location,
-      required this.price,
-      required this.title,
-      });
+  DetailScreen({
+    required this.date,
+    required this.duration,
+    required this.famousPoints,
+    required this.famousResturant,
+    required this.imageUrl,
+    required this.isFav,
+    required this.isNorth,
+    required this.isSouth,
+    required this.location,
+    required this.price,
+    required this.title,
+  });
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
@@ -57,7 +57,7 @@ class _DetailScreenState extends State<DetailScreen>
         .collection("place")
         .doc();
 
-        String id = DateTime.now().microsecondsSinceEpoch.toString();
+    String id = DateTime.now().microsecondsSinceEpoch.toString();
 
     ref.set({
       'date': widget.date,
@@ -72,10 +72,7 @@ class _DetailScreenState extends State<DetailScreen>
       'price': widget.price,
       'title': widget.title,
     }).then(
-      (value) => Fluttertoast.showToast(
-        msg: "Added to favourite place",
-        backgroundColor: Colors.black87,
-      ),
+      (value) =>Get.snackbar(widget.title, 'Added to favourite place',colorText: Colors.black,backgroundColor: Colors.white),
     );
   }
 
@@ -91,7 +88,7 @@ class _DetailScreenState extends State<DetailScreen>
             height: MediaQuery.of(context).size.height / 2,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount:  widget.imageUrl.length,
+              itemCount: widget.imageUrl.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
@@ -172,7 +169,7 @@ class _DetailScreenState extends State<DetailScreen>
                           .collection('users-favourite-items')
                           .doc(FirebaseAuth.instance.currentUser!.email)
                           .collection("place")
-                          .where("name", isEqualTo: widget.title)
+                          .where("title", isEqualTo: widget.title)
                           .snapshots(),
                       builder: (BuildContext context,
                           AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -188,22 +185,19 @@ class _DetailScreenState extends State<DetailScreen>
                         }
                         return IconButton(
                           icon: snapshot.data!.docs.length == 0
-                              ? Icon(
+                              ? const Icon(
                                   Icons.favorite_border,
-                                  size: 30,
                                   color: Colors.white,
-                                )
-                              : Icon(
-                                  Icons.favorite_border,
                                   size: 30,
-                                  color: Colors.red,
+                                )
+                              : const Icon(
+                                  Icons.favorite,
+                                  size: 30,
+                                  color: Colors.redAccent,
                                 ),
                           onPressed: () => snapshot.data!.docs.length == 0
                               ? addToFavourite()
-                              : Fluttertoast.showToast(
-                                  msg: "Already Added",
-                                  backgroundColor: Colors.black87,
-                                ),
+                              :Get.snackbar(widget.title, 'Tours Already Added',colorText: Colors.black,backgroundColor: Colors.white)
                         );
                       }),
                 ),
@@ -211,20 +205,19 @@ class _DetailScreenState extends State<DetailScreen>
             ),
           ),
           ScrollSheet(
-              tabController: tabController!,
-              date: widget.date,
-              duration: widget.duration,
-              famousPoints: widget.famousPoints,
-              famousResturant: widget.famousResturant,
-              imageUrl: widget.imageUrl,
-              isFav: widget.isFav,
-              isNorth: widget.isNorth,
-              isSouth: widget.isSouth,
-              location: widget.location,
-              price: widget.price,
-              title: widget.title,
-              
-              ),
+            tabController: tabController!,
+            date: widget.date,
+            duration: widget.duration,
+            famousPoints: widget.famousPoints,
+            famousResturant: widget.famousResturant,
+            imageUrl: widget.imageUrl,
+            isFav: widget.isFav,
+            isNorth: widget.isNorth,
+            isSouth: widget.isSouth,
+            location: widget.location,
+            price: widget.price,
+            title: widget.title,
+          ),
         ],
       ),
     );

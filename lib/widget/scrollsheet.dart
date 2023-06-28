@@ -92,8 +92,9 @@ class ScrollSheet extends StatelessWidget {
                   child: TabBarView(controller: tabController, children: [
                     OverviewScreen(title:title,location:location,price:price,duration:duration),
                     Description(famousPoints:famousPoints,famousResturant:famousResturant),
-                    OverviewScreen(title:title,location:location,price:price,duration:duration),
-                    // BookTourScreen(selectTour: selectTour),
+                    BookTourScreen(date:date,
+                          duration:duration,famousPoints:famousPoints,famousResturant:famousResturant,
+                          imageUrl:imageUrl,isFav:isFav,isNorth:isNorth,isSouth:isSouth,location:location,price:price,title:title),
                   ]),
                 ),
               ],

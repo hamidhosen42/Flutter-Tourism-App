@@ -20,7 +20,7 @@ class _AdminNavigationBarsState extends State<AdminNavigationBars> {
   @override
   void initState() {
     _pages = [
-      const AdminHome(),
+      AdminHome(),
       const AdminBookings(),
       const ProfileScreen(),
     ];

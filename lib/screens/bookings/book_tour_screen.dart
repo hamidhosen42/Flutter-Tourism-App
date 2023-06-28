@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, unused_local_variable
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -15,12 +17,32 @@ import '../../providers/booking.dart';
 import '../../providers/tour.dart';
 
 class BookTourScreen extends StatefulWidget {
-  const BookTourScreen({
-    Key? key,
-    required this.selectTour,
-  }) : super(key: key);
+  final List date;
+  final int duration;
+  final List famousPoints;
+  final List famousResturant;
+  final List imageUrl;
+  final bool isFav;
+  final bool isNorth;
+  final bool isSouth;
+  final String location;
+  final int price;
+  final String title;
 
-  final Tour selectTour;
+  BookTourScreen(
+      {required this.date,
+      required this.duration,
+      required this.famousPoints,
+      required this.famousResturant,
+      required this.imageUrl,
+      required this.isFav,
+      required this.isNorth,
+      required this.isSouth,
+      required this.location,
+      required this.price,
+      required this.title,
+      });
+
   @override
   State<BookTourScreen> createState() => _BookTourScreenState();
 }
@@ -31,6 +53,7 @@ class _BookTourScreenState extends State<BookTourScreen> {
   final emailController = TextEditingController();
   final phoneController = TextEditingController();
   DateTime _selectDate = DateTime(0);
+  
   int person = 0;
   int? total = 0;
   String? value;
@@ -40,7 +63,7 @@ class _BookTourScreenState extends State<BookTourScreen> {
   bool flag = true;
 
   Future<void> submitData() async {
-    total = person * (widget.selectTour.price + categoryPrice!);
+    total = person * (widget.price + categoryPrice!);
     if (person % 2 == 0) {
       rooms = person ~/ 2;
     } else {
@@ -48,7 +71,8 @@ class _BookTourScreenState extends State<BookTourScreen> {
     }
     final newBooking = Booking(
       id: DateTime.now().toString(),
-      tourId: widget.selectTour.id,
+      // tourId: widget.selectTour.id,
+      tourId: widget.title,
       name: nameController.text,
       email: emailController.text,
       number: phoneController.text,
@@ -217,12 +241,12 @@ class _BookTourScreenState extends State<BookTourScreen> {
                     ),
                     suffixIcon: IconButton(
                         onPressed: () {
-                          weekDay(widget.selectTour);
+                          // weekDay(widget.selectTour);
                         },
                         icon: const Icon(Icons.calendar_month_outlined)),
                     hintText: _selectDate == DateTime(0)
                         ? 'Choose Date'
-                        : '${DateFormat.yMd().format(_selectDate)} - ${DateFormat.yMd().format(_selectDate.add(Duration(days: widget.selectTour.duration)))}',
+                        : '${DateFormat.yMd().format(_selectDate)} - ${DateFormat.yMd().format(_selectDate.add(Duration(days: widget.duration)))}',
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         width: 1,
@@ -397,7 +421,7 @@ class _BookTourScreenState extends State<BookTourScreen> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10, right: 15),
                     child: Text(
-                        'Total : ${person * (widget.selectTour.price + categoryPrice!)}',
+                        'Total : ${person * (widget.price + categoryPrice!)}',
                         style: GoogleFonts.lato(
                           fontSize: 25,
                         )),

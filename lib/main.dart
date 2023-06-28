@@ -89,7 +89,7 @@ class _MyAppState extends State<MyApp> {
                 ProfileScreen.routeName: (ctx) => const ProfileScreen(),
                 ProfileEditScreen.routeName: (ctx) => const ProfileEditScreen(),
                 IsNorth.routeName: (ctx) => const IsNorth(true),
-                AdminHome.routeName: (context) => const AdminHome(),
+                AdminHome.routeName: (context) => AdminHome(),
                 AddTour.routeName: (context) => const AddTour(),
                 NavigationBars.routeName: (context) => const NavigationBars(),
                 LoginView.routeName: (context) => const LoginView(),
